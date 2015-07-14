@@ -7,10 +7,15 @@
 //
 
 #import "ViewController.h"
+#import "ImageDetailViewController.h"
 
 @interface ViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property UIImage *chosenImage;
+
+@property UITapGestureRecognizer *tapRecognizer;
 
 @end
 
@@ -59,7 +64,7 @@
                                                                      toItem:nil
                                                                   attribute:NSLayoutAttributeNotAnAttribute
                                                                  multiplier:1.0
-                                                                   constant:300.0]];
+                                                                   constant:500.0]];
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse1
                                                                 attribute:NSLayoutAttributeWidth
@@ -77,7 +82,7 @@
                                                                    toItem:lighthouse1
                                                                 attribute:NSLayoutAttributeBottom
                                                                multiplier:1.0
-                                                                 constant:100.0]];
+                                                                 constant:0.0]];
     
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse2
@@ -86,7 +91,7 @@
                                                                    toItem:nil
                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                multiplier:1.0
-                                                                 constant:300.0]];
+                                                                 constant:500.0]];
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse2
                                                                 attribute:NSLayoutAttributeWidth
@@ -105,7 +110,7 @@
                                                                    toItem:lighthouse2
                                                                 attribute:NSLayoutAttributeBottom
                                                                multiplier:1.0
-                                                                 constant:200.0]];
+                                                                 constant:0.0]];
     
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse3
@@ -114,7 +119,7 @@
                                                                    toItem:nil
                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                multiplier:1.0
-                                                                 constant:300.0]];
+                                                                 constant:500.0]];
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse3
                                                                 attribute:NSLayoutAttributeWidth
@@ -126,10 +131,12 @@
 
     
 
-    self.scrollView.contentSize = CGSizeMake(500, 1200);
-    
+    self.scrollView.contentSize = CGSizeMake(500, 1500);
     
     self.scrollView.pagingEnabled = YES;
+    
+    self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(identifyTapOverView)];
+    [self.scrollView addGestureRecognizer:self.tapRecognizer];
     
     
     
@@ -139,5 +146,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)identifyTapOverView {
+    CGPoint point = [self.tapRecognizer locationInView:self.scrollView];
+    UIImageView *tappedView = [self.scrollView hitTest:point withEvent:nil];
+    self.chosenImage = tappedView.image;
+    
+    [self performSegueWithIdentifier:@"ToImageDetailView" sender:tappedView];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ImageDetailViewController *destinationVC = segue.destinationViewController;
+    destinationVC.ImageToDetail =self.chosenImage;
+}
+
+
 
 @end
