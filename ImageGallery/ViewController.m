@@ -43,18 +43,18 @@
     lighthouse1.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse1
-                                                          attribute:NSLayoutAttributeLeftMargin
+                                                          attribute:NSLayoutAttributeCenterX
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.scrollView
-                                                          attribute:NSLayoutAttributeLeftMargin
+                                                          attribute:NSLayoutAttributeCenterX
                                                          multiplier:1.0
                                                            constant:0.0]];
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse1
-                                                          attribute:NSLayoutAttributeTop
+                                                          attribute:NSLayoutAttributeCenterY
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.scrollView
-                                                          attribute:NSLayoutAttributeTop
+                                                          attribute:NSLayoutAttributeCenterY
                                                          multiplier:1.0
                                                            constant:0.0]];
     
@@ -64,7 +64,7 @@
                                                                      toItem:nil
                                                                   attribute:NSLayoutAttributeNotAnAttribute
                                                                  multiplier:1.0
-                                                                   constant:500.0]];
+                                                                   constant:250.0]];
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse1
                                                                 attribute:NSLayoutAttributeWidth
@@ -72,17 +72,26 @@
                                                                    toItem:nil
                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                multiplier:1.0
-                                                                 constant:500.0]];
+                                                                 constant:250.0]];
     lighthouse2.userInteractionEnabled = YES;
     lighthouse2.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse2
-                                                                attribute:NSLayoutAttributeTop
+                                                                attribute:NSLayoutAttributeCenterY
                                                                 relatedBy:NSLayoutRelationEqual
-                                                                   toItem:lighthouse1
-                                                                attribute:NSLayoutAttributeBottom
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeCenterY
                                                                multiplier:1.0
                                                                  constant:0.0]];
+    
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse2
+                                                                attribute:NSLayoutAttributeLeftMargin
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:lighthouse1
+                                                                attribute:NSLayoutAttributeRightMargin
+                                                               multiplier:1.0
+                                                                 constant:100.0]];
     
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse2
@@ -91,7 +100,7 @@
                                                                    toItem:nil
                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                multiplier:1.0
-                                                                 constant:500.0]];
+                                                                 constant:250.0]];
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse2
                                                                 attribute:NSLayoutAttributeWidth
@@ -99,18 +108,27 @@
                                                                    toItem:nil
                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                multiplier:1.0
-                                                                 constant:500.0]];
+                                                                 constant:250.0]];
     
     lighthouse3.userInteractionEnabled = YES;
     lighthouse3.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse3
-                                                                attribute:NSLayoutAttributeTop
+                                                                attribute:NSLayoutAttributeCenterY
                                                                 relatedBy:NSLayoutRelationEqual
-                                                                   toItem:lighthouse2
-                                                                attribute:NSLayoutAttributeBottom
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeCenterY
                                                                multiplier:1.0
                                                                  constant:0.0]];
+ 
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse3
+                                                                attribute:NSLayoutAttributeLeftMargin
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:lighthouse2
+                                                                attribute:NSLayoutAttributeRightMargin
+                                                               multiplier:1.0
+                                                                 constant:100.0]];
     
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse3
@@ -119,7 +137,7 @@
                                                                    toItem:nil
                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                multiplier:1.0
-                                                                 constant:500.0]];
+                                                                 constant:250.0]];
     
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:lighthouse3
                                                                 attribute:NSLayoutAttributeWidth
@@ -127,11 +145,11 @@
                                                                    toItem:nil
                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                multiplier:1.0
-                                                                 constant:500.0]];
+                                                                 constant:250.0]];
 
     
 
-    self.scrollView.contentSize = CGSizeMake(500, 1500);
+    self.scrollView.contentSize = CGSizeMake(1100, 1500);
     
     self.scrollView.pagingEnabled = YES;
     
