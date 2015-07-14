@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.scrollView.delegate = self;
+    
     UIImageView *lighthouse1 = [[UIImageView alloc] initWithFrame:CGRectZero];
     UIImageView *lighthouse2 = [[UIImageView alloc] initWithFrame:CGRectZero];
     UIImageView *lighthouse3 = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -182,7 +184,7 @@
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
-    CGFloat pageWidth = self.scrollView.contentSize.width;
+    CGFloat pageWidth = self.scrollView.frame.size.width;
     int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.galleryPageControl.currentPage = page;
 }
