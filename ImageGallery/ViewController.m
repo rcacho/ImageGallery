@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property UIImage *chosenImage;
+@property (weak, nonatomic) IBOutlet UIPageControl *galleryPageControl;
 
 @property UITapGestureRecognizer *tapRecognizer;
 
@@ -176,9 +177,24 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ImageDetailViewController *destinationVC = segue.destinationViewController;
-    destinationVC.ImageToDetail =self.chosenImage;
+    destinationVC.imageToDetail =self.chosenImage;
 }
 
 
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    CGFloat pageWidth = self.scrollView.contentSize.width;
+    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.galleryPageControl.currentPage = page;
+}
+
+
+- (IBAction)changePage {
+    // update the scroll view to the appropriate page
+    CGRect frame;
+    frame.origin.x = self.scrollView.frame.size.width * self.galleryPageControl.currentPage;
+    frame.origin.y = 0;
+    frame.size = self.scrollView.frame.size;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
+}
 
 @end

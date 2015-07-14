@@ -69,16 +69,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WWw-LY-Omm">
-                                <rect key="frame" x="36" y="40" width="528" height="540"/>
+                                <rect key="frame" x="36" y="40" width="528" height="510"/>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ghz-ZM-dIz">
+                                <rect key="frame" x="281" y="563" width="39" height="37"/>
+                                <connections>
+                                    <action selector="changePage" destination="vXZ-lx-hvc" eventType="valueChanged" id="VaI-WG-5D6"/>
+                                </connections>
+                            </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WWw-LY-Omm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="7ds-0z-Ug5"/>
                             <constraint firstAttribute="centerX" secondItem="WWw-LY-Omm" secondAttribute="centerX" id="9Df-kC-BFM"/>
+                            <constraint firstAttribute="centerY" secondItem="Ghz-ZM-dIz" secondAttribute="centerY" id="BLt-mg-JVY"/>
                             <constraint firstItem="WWw-LY-Omm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="33" id="Nvb-YI-z9y"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Ghz-ZM-dIz" secondAttribute="bottom" id="QgS-yB-gyt"/>
                             <constraint firstItem="WWw-LY-Omm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="TMz-n5-wdQ"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="WWw-LY-Omm" secondAttribute="bottom" constant="20" id="hxC-S9-Ou8"/>
+                            <constraint firstAttribute="centerX" secondItem="Ghz-ZM-dIz" secondAttribute="centerX" id="d0f-Lr-lWf"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="WWw-LY-Omm" secondAttribute="bottom" constant="50" id="hxC-S9-Ou8"/>
                             <constraint firstAttribute="centerY" secondItem="WWw-LY-Omm" secondAttribute="centerY" id="jfo-yV-8vl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WWw-LY-Omm" secondAttribute="trailing" constant="20" id="oeu-ge-fdE"/>
                         </constraints>
@@ -87,10 +96,12 @@
                                 <exclude reference="9Df-kC-BFM"/>
                                 <exclude reference="Nvb-YI-z9y"/>
                                 <exclude reference="jfo-yV-8vl"/>
+                                <exclude reference="BLt-mg-JVY"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="galleryPageControl" destination="Ghz-ZM-dIz" id="YZP-1K-S1C"/>
                         <outlet property="scrollView" destination="WWw-LY-Omm" id="du2-fF-xXM"/>
                         <segue destination="DAB-h8-XhC" kind="show" identifier="ToImageDetailView" id="jJ5-34-Xb0"/>
                     </connections>
